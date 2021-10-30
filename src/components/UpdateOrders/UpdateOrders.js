@@ -9,7 +9,7 @@ const UpdateOrders = () => {
     const [isUpdate, setIsUpdated] = useState(null);
     const [product, setProduct] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:5000/orders/${productId}`)
+        fetch(`https://murmuring-earth-92815.herokuapp.com/orders/${productId}`)
             .then((res) => res.json())
             .then((data) => console.log(data));
     }, [productId]);
@@ -22,7 +22,7 @@ const UpdateOrders = () => {
     } = useForm();
     const onSubmit = (data) => {
 
-        fetch(`http://localhost:5000/orders/${productId}`, {
+        fetch(`https://murmuring-earth-92815.herokuapp.com/orders/${productId}`, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),

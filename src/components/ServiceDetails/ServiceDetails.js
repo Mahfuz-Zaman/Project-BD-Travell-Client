@@ -7,12 +7,12 @@ const ServiceDetails = () => {
     const { serviceId } = useParams();
     const [serv, setServ] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://murmuring-earth-92815.herokuapp.com/services')
             .then(res => res.json())
             .then(data => setServ(data))
     }, [])
 
-    const findServ = serv.find(tour => tour._id == serviceId);
+    const findServ = serv.find(tour => tour._id === serviceId);
 
 
     /*  form Part */
@@ -27,7 +27,7 @@ const ServiceDetails = () => {
 
 
         console.log(data);
-        fetch("http://localhost:5000/orders", {
+        fetch("https://murmuring-earth-92815.herokuapp.com/orders", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),
@@ -50,7 +50,7 @@ const ServiceDetails = () => {
                     <img className='w-100 mt-5' src={findServ?.image} alt="" />
                 </div>
                 <div className="col-md-6">
-                    <h1 className='mt-5 fw-bold text-warning'>{findServ?.title}</h1>
+                    <h1 className='mt-5 fw-bold text-success'>{findServ?.title}</h1>
                     <hr />
                     <h5 className='mt-2'>{findServ?.desc}</h5>
 
@@ -60,7 +60,7 @@ const ServiceDetails = () => {
 
 
 
-            {/* Form */}
+
             <div className='form-part'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input required className='p-2 m-2' placeholder='address' {...register("address")} />
@@ -72,7 +72,9 @@ const ServiceDetails = () => {
 
                     {errors.exampleRequired && <span>This field is required</span>}
                     <br />
-                    <input className='className="btn btn-warning fw-bold mt-3"' value='PLACE ORDER' type="submit" />
+                    <input className='className="btn btn-success fw-bold"' value='Confirm Service' type="submit" />
+                    <br />
+                    <br />
                 </form>
             </div>
 

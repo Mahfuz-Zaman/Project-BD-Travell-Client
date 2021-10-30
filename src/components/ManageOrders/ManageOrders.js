@@ -6,7 +6,7 @@ const ManageOrders = () => {
     const [order, setOrder] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/orders")
+        fetch("https://murmuring-earth-92815.herokuapp.com/orders")
             .then((res) => res.json())
             .then((data) => setOrder(data));
     }, []);
@@ -17,7 +17,7 @@ const ManageOrders = () => {
     const [orders, setOrders] = useState([]);
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('https://murmuring-earth-92815.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
@@ -28,7 +28,7 @@ const ManageOrders = () => {
     const handleDeleteUser = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/orders/${id}`
+            const url = `https://murmuring-earth-92815.herokuapp.com/orders/${id}`
             fetch(url, {
                 method: 'DELETE',
             })

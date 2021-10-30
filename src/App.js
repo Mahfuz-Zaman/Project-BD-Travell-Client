@@ -18,6 +18,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UpdateOrders from './components/UpdateOrders/UpdateOrders';
 import NotFound from './components/NotFound/NotFound';
 import Customer from './components/Customer/Customer';
+import Login from './components/Login/Login';
 
 
 function App() {
@@ -36,6 +37,9 @@ function App() {
             <Route path='/about'>
               <About></About>
             </Route>
+            <Route path='/login'>
+              <Login></Login>
+            </Route>
 
             <Route path='/services'>
               <Services></Services>
@@ -49,7 +53,6 @@ function App() {
             <Route path='/manageOrders'>
               <ManageOrders></ManageOrders>
             </Route>
-
             <PrivateRoute exact path='/servicedetails/:serviceId'>
               <ServiceDetails></ServiceDetails>
             </PrivateRoute>
