@@ -17,8 +17,8 @@ const About = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="col-lg-6">
-                        <img src={aboutImg} alt="" />
+                    <div className="col-lg-6 container">
+                        <img className="w-100" src={aboutImg} alt="" />
                     </div>
 
                 </div>
