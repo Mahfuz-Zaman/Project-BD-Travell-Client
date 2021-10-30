@@ -43,9 +43,9 @@ const ManageOrders = () => {
         }
     }
     return (
-        <div className='container bg-dark'>
-            <h1 className='text-center my-3 text-white'>Total Orders: {order?.length}</h1>
-            <Table striped bordered hover className="text-white">
+        <div className='container '>
+            <h1 className='text-center my-3 bg-warning'>Total Orders: {order?.length}</h1>
+            <Table striped bordered hover className="text-white bg-dark">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -67,7 +67,7 @@ const ManageOrders = () => {
                             <td className="text-white">{pd?.phone}</td>
                             <td className="text-white">{pd?.address}</td>
                             <td className="text-white"><Button variant="danger" onClick={() => handleDeleteUser(pd._id)} >Delete</Button>
-                                <Link to={`orders/update/${pd._id}`}> <Button variant="success">update Information</Button></Link> </td>
+                                <Link to={`orders/update/${pd._id}`}> <Button variant="success">update</Button></Link> </td>
                         </tr>
                     </tbody>
                 ))}

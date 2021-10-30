@@ -23,7 +23,6 @@ const MyOrders = () => {
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
-                console.log(products);
             })
     }, [products]);
 
@@ -49,7 +48,7 @@ const MyOrders = () => {
     }
     return (
         <div className='container'>
-            <h1 className='text-center my-3'>My Orders: {events?.length}</h1>
+            <h1 className='text-center my-3 bg-warning'>My Orders: {events?.length}</h1>
             <Table striped bordered hover className="bg-dark text-white">
                 <thead>
                     <tr>

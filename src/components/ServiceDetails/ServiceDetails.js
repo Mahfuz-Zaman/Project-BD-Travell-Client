@@ -20,13 +20,13 @@ const ServiceDetails = () => {
     const { user } = useAuth();
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-        console.log(data);
+
         data.email = user.email;
         data.name = user.displayName;
         data.serviceId = findServ?.title;
 
 
-        console.log(data);
+
         fetch("https://murmuring-earth-92815.herokuapp.com/orders", {
             method: "POST",
             headers: { "content-type": "application/json" },

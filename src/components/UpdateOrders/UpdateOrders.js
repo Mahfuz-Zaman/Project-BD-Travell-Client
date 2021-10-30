@@ -11,7 +11,7 @@ const UpdateOrders = () => {
     useEffect(() => {
         fetch(`https://murmuring-earth-92815.herokuapp.com/orders/${productId}`)
             .then((res) => res.json())
-            .then((data) => console.log(data));
+            .then((data) => setProduct(data));
     }, [productId]);
 
 
