@@ -28,7 +28,7 @@ const AddServices = () => {
         <div>
 
             <h2 className='custom-h1 text-center bg-warning mb-0'>Choose To Add Your Expected Event</h2>
-            <div className='text-center bg-info mt-0'>
+            <div className='text-center bg-dark mt-0'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input required className='p-3 m-2' type='text' placeholder='Title' {...register("title")} />
                     <br />
