@@ -1,0 +1,8 @@
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  position: relative;
+  top: -15px;
+  right: -23px;
+}
