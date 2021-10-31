@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
+import "./MyOrders.css"
 
 import useAuth from '../../hooks/useAuth';
 
@@ -10,7 +11,7 @@ const MyOrders = () => {
         fetch(`https://murmuring-earth-92815.herokuapp.com/myOrders/${user?.email}`)
             .then((res) => res.json())
             .then((data) => setEvents(data));
-    }, [user.email]);
+    }, [user.email, events]);
 
 
 
@@ -70,7 +71,7 @@ const MyOrders = () => {
                             <td className="text-white">{pd?.serviceId}</td>
                             <td className="text-white">{pd?.phone}</td>
                             <td className="text-white">{pd?.address}</td>
-                            <td> <button onClick={() => handleDeleteUser(pd._id)} className="btn btn-danger text-white m-2">cancel</button> </td>
+                            <td> <button onClick={() => handleDeleteUser(pd._id)} className="btn btn-danger text-white">cancel</button> </td>
 
 
                         </tr>

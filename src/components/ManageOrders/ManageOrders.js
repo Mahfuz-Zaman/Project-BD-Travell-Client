@@ -9,7 +9,7 @@ const ManageOrders = () => {
         fetch("https://murmuring-earth-92815.herokuapp.com/orders")
             .then((res) => res.json())
             .then((data) => setOrder(data));
-    }, []);
+    }, [order]);
 
 
     //Delete Part

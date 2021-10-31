@@ -1,0 +1,9 @@
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+  cursor: pointer;
+  position: relative;
+  right: 0px;
+  top: 0px;
+}
