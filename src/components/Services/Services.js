@@ -18,7 +18,9 @@ const Services = () => {
                 <h2 className='fw-bold text-success text-center my-5'>We Offered You Some Of Our Services
                 </h2>
                 {services.length === 0 ?
-                    <Spinner className='ms-5' animation="border" variant="dark" />
+                    <div className="text-center">
+                        <Spinner animation="border" variant="dark" />
+                    </div>
                     :
                     <div className="row row-cols-1 row-cols-md-3 g-4">
                         {
