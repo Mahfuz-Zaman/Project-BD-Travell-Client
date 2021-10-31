@@ -4,7 +4,9 @@ import Banner from '../Banner/Banner';
 import Customer from '../Customer/Customer';
 import Services from '../Services/Services';
 
+
 const Home = () => {
+
     return (
         <div>
             <Banner></Banner>

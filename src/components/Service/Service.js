@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const Service = (props) => {
     const { title, price, image, desc, _id } = props.service;
     const url = `/servicedetails/${_id}`

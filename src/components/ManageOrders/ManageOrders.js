@@ -4,26 +4,18 @@ import { Link } from 'react-router-dom';
 
 const ManageOrders = () => {
     const [order, setOrder] = useState([]);
+    const [reload, setReload] = useState(true);
 
     useEffect(() => {
         fetch("https://murmuring-earth-92815.herokuapp.com/orders")
             .then((res) => res.json())
-            .then((data) => setOrder(data));
-    }, [order]);
+            .then((data) => {
+                setReload(!reload)
+                setOrder(data)
+            });
 
-
-    //Delete Part
-
-    const [orders, setOrders] = useState([]);
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        fetch('https://murmuring-earth-92815.herokuapp.com/orders')
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data);
-            })
-    }, [products]);
-
+    }, [reload]);
+    console.log(order)
     //DELETE AN Products
     const handleDeleteUser = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
@@ -36,16 +28,36 @@ const ManageOrders = () => {
                 .then(data => {
                     if (data.deletedCount > 0) {
                         alert('deleted successfully');
-                        const remainingProducts = orders.filter(order => order._id !== id);
-                        setOrders(remainingProducts);
+
+                        const remainingProducts = order.filter(order => order._id !== id);
+
+                        setOrder(remainingProducts);
                     }
                 })
         }
+
+    }
+
+    function handleConfirm(id) {
+        const proceed = window.confirm('Are you sure, you want to Confirm?');
+        if (proceed) {
+            const url = `https://murmuring-earth-92815.herokuapp.com/confirm/${id}`
+            fetch(url, {
+                method: 'PUT',
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount === 1) {
+                        setReload(!reload);
+                    }
+                });
+        }
+
     }
     return (
-        <div className='container '>
-            <h1 className='text-center my-3 bg-warning'>Total Orders: {order?.length}</h1>
-            <Table striped bordered hover className="text-white bg-dark">
+        <div className='container'>
+            <h1 className='text-center my-3'>All Orders: {order?.length}</h1>
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>No</th>
@@ -55,24 +67,31 @@ const ManageOrders = () => {
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Status</th>
+                        <th>Delete</th>
+                        <th>Update</th>
+                        <th>Confirm</th>
                     </tr>
                 </thead>
                 {order?.map((pd, index) => (
+
                     <tbody>
                         <tr>
-                            <td className="text-white">{index}</td>
-                            <td className="text-white">{pd?.name}</td>
-                            <td className="text-white">{pd?.email}</td>
-                            <td className="text-white">{pd?.serviceId}</td>
-                            <td className="text-white">{pd?.phone}</td>
-                            <td className="text-white">{pd?.address}</td>
-                            <td className="text-white"><Button variant="danger" onClick={() => handleDeleteUser(pd._id)} >Delete</Button>
-                                <Link to={`orders/update/${pd._id}`}> <Button variant="success">update</Button></Link> </td>
+                            <td>{index}</td>
+                            <td>{pd?.name}</td>
+                            <td>{pd?.email}</td>
+                            <td>{pd?.serviceId}</td>
+                            <td>{pd?.phone}</td>
+                            <td>{pd?.address}</td>
+                            <td>{pd?.status}</td>
+                            <td> <button onClick={() => handleDeleteUser(pd._id)} className="btn btn-danger m-2">Cancel</button></td>
+                            <td> <Link to={`orders/update/${pd._id}`}> <Button className='ms-5' variant="success">Edit</Button></Link></td>
+                            <td> <button onClick={() => handleConfirm(pd._id)} className="btn btn-danger m-2">Confirm</button>
+                            </td>
                         </tr>
                     </tbody>
                 ))}
             </Table>
-        </div>
+        </div >
     );
 };
 

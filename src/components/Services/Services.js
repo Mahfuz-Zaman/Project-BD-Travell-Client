@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 import Service from '../Service/Service';
 
 
@@ -16,17 +17,20 @@ const Services = () => {
             <div className='container about-part'>
                 <h2 className='fw-bold text-success text-center my-5'>We Offered You Some Of Our Services
                 </h2>
-                <div className="row row-cols-1 row-cols-md-3 g-4">
-                    {
-                        services.map(service => <Service
-                            key={service._id}
-                            service={service}
-                        ></Service>)
+                {services.length === 0 ?
+                    <Spinner className='ms-5' animation="border" variant="dark" />
+                    :
+                    <div className="row row-cols-1 row-cols-md-3 g-4">
+                        {
+                            services.map(service => <Service
+                                key={service._id}
+                                service={service}
+                            ></Service>)
 
-                    }
+                        }
+                    </div>
 
-
-                </div>
+                }
             </div>
         </div>
     );
