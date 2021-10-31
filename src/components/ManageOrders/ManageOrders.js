@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ManageOrders = () => {
@@ -55,10 +55,10 @@ const ManageOrders = () => {
 
     }
     return (
-        <div className='container'>
-            <h1 className='text-center my-3'>All Orders: {order?.length}</h1>
+        <div className='container bg-dark'>
+            <h1 className='text-center my-3 bg-warning'>Total Orders: {order?.length}</h1>
             <Table striped bordered hover>
-                <thead>
+                <thead className="text-white text-center">
                     <tr>
                         <th>No</th>
                         <th>Name</th>
@@ -74,17 +74,17 @@ const ManageOrders = () => {
                 </thead>
                 {order?.map((pd, index) => (
 
-                    <tbody>
-                        <tr>
-                            <td>{index}</td>
-                            <td>{pd?.name}</td>
-                            <td>{pd?.email}</td>
-                            <td>{pd?.serviceId}</td>
-                            <td>{pd?.phone}</td>
-                            <td>{pd?.address}</td>
-                            <td>{pd?.status}</td>
-                            <td> <button onClick={() => handleDeleteUser(pd._id)} className="btn btn-danger m-2">Cancel</button></td>
-                            <td> <Link to={`orders/update/${pd._id}`}> <Button className='ms-5' variant="success">Edit</Button></Link></td>
+                    <tbody className="text-white text-center">
+                        <tr >
+                            <td className="text-white text-center">{index}</td>
+                            <td className="text-white text-center">{pd?.name}</td>
+                            <td className="text-white text-center">{pd?.email}</td>
+                            <td className="text-white text-center">{pd?.serviceId}</td>
+                            <td className="text-white text-center">{pd?.phone}</td>
+                            <td className="text-white text-center">{pd?.address}</td>
+                            <td className="text-white text-center">{pd?.status}</td>
+                            <td className="text-white text-center"> <button onClick={() => handleDeleteUser(pd._id)} className="btn btn-danger m-2">Cancel</button></td>
+                            <td> <Link to={`orders/update/${pd._id}`}> <button className='btn mt-2 btn-success text-center' variant="success">Update</button></Link></td>
                             <td> <button onClick={() => handleConfirm(pd._id)} className="btn btn-danger m-2">Confirm</button>
                             </td>
                         </tr>
