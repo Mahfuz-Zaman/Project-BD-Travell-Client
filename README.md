@@ -2,7 +2,7 @@
 
 ---
 
-is a full-stack web-based application that offers different types of Traveling jobs to the people.
+BD-Travel is a full-stack web-based application that offers different types of Traveling jobs to the people.
 
 Live Site: **[ BD Travel ](https://tourism-assignment.web.app/)**.
 
